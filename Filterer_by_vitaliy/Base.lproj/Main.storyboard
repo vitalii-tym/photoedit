@@ -104,6 +104,7 @@
                         <outlet property="view_Edit_Slider" destination="5dq-kn-UjH" id="0yS-2c-RBB"/>
                         <outlet property="view_Filters" destination="0Rr-iq-Sl8" id="Pa9-kt-00p"/>
                         <outlet property="view_Original_label" destination="5qY-3p-Z99" id="u5o-Tj-Klf"/>
+                        <outlet property="view_filters_list" destination="txz-TN-x1H" id="z8k-H4-hMe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -133,19 +134,19 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <slider autoresizesSubviews="NO" opaque="NO" contentMode="center" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="0.0" maxValue="255" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUB-rp-ES0">
-                                    <rect key="frame" x="-2" y="21" width="244" height="31"/>
+                                    <rect key="frame" x="-2" y="21" width="244" height="61"/>
                                     <connections>
                                         <action selector="slider_threshold_changed:" destination="BYZ-38-t0r" eventType="valueChanged" id="45s-22-lEG"/>
                                     </connections>
                                 </slider>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Effect power" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neR-hn-orF">
-                                    <rect key="frame" x="0.0" y="51" width="240" height="21"/>
+                                    <rect key="frame" x="0.0" y="81" width="240" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="20" minValue="1" maxValue="255" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TIO-h1-Q6M">
-                                    <rect key="frame" x="-2" y="71" width="244" height="61"/>
+                                    <rect key="frame" x="-2" y="101" width="244" height="31"/>
                                     <connections>
                                         <action selector="slider_power_changed:" destination="BYZ-38-t0r" eventType="valueChanged" id="gFX-S4-sTY"/>
                                     </connections>
@@ -161,63 +162,101 @@
                         <constraint firstItem="4eD-tO-cFX" firstAttribute="top" secondItem="5dq-kn-UjH" secondAttribute="top" id="khY-1m-g4p"/>
                     </constraints>
                 </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="txz-TN-x1H">
+                    <rect key="frame" x="0.0" y="0.0" width="497" height="125"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OXx-1h-B21">
+                        <size key="itemSize" width="167" height="109"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <cells>
+                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="oTK-Fd-HzB" customClass="FiltersCell" customModule="Filterer_by_vitaliy" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="8" width="167" height="109"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                <rect key="frame" x="0.0" y="0.0" width="167" height="109"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dNY-V9-PZw">
+                                        <rect key="frame" x="8" y="8" width="151" height="72"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZZ-Sv-7uV">
+                                        <rect key="frame" x="8" y="80" width="96" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <constraints>
+                                <constraint firstAttribute="trailingMargin" secondItem="xZZ-Sv-7uV" secondAttribute="trailing" constant="55" id="3YT-Sm-ACe"/>
+                                <constraint firstItem="xZZ-Sv-7uV" firstAttribute="leading" secondItem="oTK-Fd-HzB" secondAttribute="leadingMargin" id="4g4-2T-wSk"/>
+                                <constraint firstItem="dNY-V9-PZw" firstAttribute="leading" secondItem="oTK-Fd-HzB" secondAttribute="leadingMargin" id="DH3-4f-QaD"/>
+                                <constraint firstAttribute="bottomMargin" secondItem="xZZ-Sv-7uV" secondAttribute="bottom" id="WJe-ys-r33"/>
+                                <constraint firstItem="dNY-V9-PZw" firstAttribute="top" secondItem="oTK-Fd-HzB" secondAttribute="topMargin" id="cRq-fL-q8Z"/>
+                                <constraint firstAttribute="trailingMargin" secondItem="dNY-V9-PZw" secondAttribute="trailing" id="eV1-vY-hDH"/>
+                                <constraint firstItem="xZZ-Sv-7uV" firstAttribute="top" secondItem="dNY-V9-PZw" secondAttribute="bottom" id="xHM-w9-ihG"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="image" destination="dNY-V9-PZw" id="bcZ-hu-D22"/>
+                                <outlet property="label" destination="xZZ-Sv-7uV" id="Yn2-Ja-uW1"/>
+                            </connections>
+                        </collectionViewCell>
+                    </cells>
+                    <connections>
+                        <outlet property="dataSource" destination="BYZ-38-t0r" id="Ri2-YJ-Zbd"/>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="K4I-dI-6nY"/>
+                    </connections>
+                </collectionView>
                 <view contentMode="scaleToFill" id="0Rr-iq-Sl8" userLabel="Filters">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="435"/>
+                    <rect key="frame" x="0.0" y="0.0" width="672" height="461"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CRq-CS-Mzx">
-                            <rect key="frame" x="0.0" y="0.0" width="240" height="435"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2P-dS-9UJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="240" height="105"/>
-                                    <accessibility key="accessibilityConfiguration" label="Light">
-                                        <accessibilityTraits key="traits" button="YES"/>
-                                    </accessibility>
-                                    <state key="normal" title="Light" image="filter_icon">
-                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="on_tap_Light_Filter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hhC-Zk-Ucd"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pug-rV-CRt">
-                                    <rect key="frame" x="0.0" y="105" width="240" height="105"/>
-                                    <accessibility key="accessibilityConfiguration" label="Green"/>
-                                    <state key="normal" title="Green" image="filter_icon">
-                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="on_tap_Green_Filter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="55b-0J-NrY"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udE-XC-7ID">
-                                    <rect key="frame" x="0.0" y="210" width="240" height="105"/>
-                                    <state key="normal" title="Red" image="filter_icon">
-                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="on_tap_Red_Filter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IW4-Gu-6HB"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pUZ-ij-00b">
-                                    <rect key="frame" x="0.0" y="315" width="240" height="120"/>
-                                    <state key="normal" title="Blue" image="filter_icon">
-                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="on_tap_Blue_Filter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tlF-n8-2sv"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                        </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udE-XC-7ID">
+                            <rect key="frame" x="526" y="183" width="240" height="105"/>
+                            <state key="normal" title="Red" image="filter_icon">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="on_tap_Red_Filter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IW4-Gu-6HB"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pUZ-ij-00b">
+                            <rect key="frame" x="357" y="171" width="240" height="120"/>
+                            <state key="normal" title="Blue" image="filter_icon">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="on_tap_Blue_Filter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tlF-n8-2sv"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2P-dS-9UJ">
+                            <rect key="frame" x="210" y="178" width="240" height="105"/>
+                            <accessibility key="accessibilityConfiguration" label="Light">
+                                <accessibilityTraits key="traits" button="YES"/>
+                            </accessibility>
+                            <state key="normal" title="Light" image="filter_icon">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="on_tap_Light_Filter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hhC-Zk-Ucd"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pug-rV-CRt">
+                            <rect key="frame" x="15" y="196" width="240" height="105"/>
+                            <accessibility key="accessibilityConfiguration" label="Green"/>
+                            <state key="normal" title="Green" image="filter_icon">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="on_tap_Green_Filter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="55b-0J-NrY"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="CRq-CS-Mzx" firstAttribute="leading" secondItem="0Rr-iq-Sl8" secondAttribute="leading" id="4XQ-le-oAD"/>
-                        <constraint firstAttribute="bottom" secondItem="CRq-CS-Mzx" secondAttribute="bottom" id="4r2-et-l9o"/>
-                        <constraint firstAttribute="trailing" secondItem="CRq-CS-Mzx" secondAttribute="trailing" id="8ZG-ku-C16"/>
-                        <constraint firstItem="CRq-CS-Mzx" firstAttribute="top" secondItem="0Rr-iq-Sl8" secondAttribute="top" id="HgX-uc-aXo"/>
-                    </constraints>
                 </view>
             </objects>
             <point key="canvasLocation" x="278" y="285"/>

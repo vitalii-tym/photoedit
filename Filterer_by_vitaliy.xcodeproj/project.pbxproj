@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BBDA71141CA2FA24001AF393 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDA71131CA2FA24001AF393 /* Filters.swift */; };
+		BBDA71141CA2FA24001AF393 /* FiltersCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDA71131CA2FA24001AF393 /* FiltersCells.swift */; };
 		BBEC2F3B1CA2AFCF006E83AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC2F3A1CA2AFCF006E83AE /* AppDelegate.swift */; };
 		BBEC2F3D1CA2AFCF006E83AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC2F3C1CA2AFCF006E83AE /* ViewController.swift */; };
 		BBEC2F401CA2AFCF006E83AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBEC2F3E1CA2AFCF006E83AE /* Main.storyboard */; };
 		BBEC2F421CA2AFCF006E83AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBEC2F411CA2AFCF006E83AE /* Assets.xcassets */; };
 		BBEC2F451CA2AFCF006E83AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBEC2F431CA2AFCF006E83AE /* LaunchScreen.storyboard */; };
 		BBEC2F4D1CA2B038006E83AE /* RGBAImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC2F4C1CA2B038006E83AE /* RGBAImage.swift */; };
+		FE0E25771CB67DA500D580F6 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0E25761CB67DA500D580F6 /* FilterCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BBDA71131CA2FA24001AF393 /* Filters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
+		BBDA71131CA2FA24001AF393 /* FiltersCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersCells.swift; sourceTree = "<group>"; };
 		BBEC2F371CA2AFCF006E83AE /* Filterer_by_vitaliy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Filterer_by_vitaliy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBEC2F3A1CA2AFCF006E83AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBEC2F3C1CA2AFCF006E83AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +27,7 @@
 		BBEC2F441CA2AFCF006E83AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BBEC2F461CA2AFD0006E83AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBEC2F4C1CA2B038006E83AE /* RGBAImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBAImage.swift; sourceTree = "<group>"; };
+		FE0E25761CB67DA500D580F6 /* FilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +62,9 @@
 			children = (
 				BBEC2F3A1CA2AFCF006E83AE /* AppDelegate.swift */,
 				BBEC2F3C1CA2AFCF006E83AE /* ViewController.swift */,
+				FE0E25761CB67DA500D580F6 /* FilterCell.swift */,
 				BBEC2F4C1CA2B038006E83AE /* RGBAImage.swift */,
-				BBDA71131CA2FA24001AF393 /* Filters.swift */,
+				BBDA71131CA2FA24001AF393 /* FiltersCells.swift */,
 				BBEC2F3E1CA2AFCF006E83AE /* Main.storyboard */,
 				BBEC2F411CA2AFCF006E83AE /* Assets.xcassets */,
 				BBEC2F431CA2AFCF006E83AE /* LaunchScreen.storyboard */,
@@ -141,8 +144,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE0E25771CB67DA500D580F6 /* FilterCell.swift in Sources */,
 				BBEC2F3D1CA2AFCF006E83AE /* ViewController.swift in Sources */,
-				BBDA71141CA2FA24001AF393 /* Filters.swift in Sources */,
+				BBDA71141CA2FA24001AF393 /* FiltersCells.swift in Sources */,
 				BBEC2F4D1CA2B038006E83AE /* RGBAImage.swift in Sources */,
 				BBEC2F3B1CA2AFCF006E83AE /* AppDelegate.swift in Sources */,
 			);

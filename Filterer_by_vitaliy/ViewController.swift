@@ -8,11 +8,12 @@
 
 import UIKit
 
+private let reuseIdentifier = "ImageCell"
 var originalImage = UIImage(named: "scenery.png")! //opening the image
 var filteredImage = originalImage
 let icon_filter = UIImage(named: "filter_icon") //that will be the icon on filter buttons to preview result
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var label_Original: UILabel!
     @IBOutlet weak var MainImage: UIImageView!
@@ -28,6 +29,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBOutlet var view_Original_label: UIView!
     @IBOutlet var view_Filters: UIView!
+    @IBOutlet var view_filters_list: UICollectionView!
     @IBOutlet var view_Edit_Slider: UIView!
     
     @IBOutlet weak var stackview_buttons: UIStackView!
@@ -93,18 +95,44 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func on_tap_Filter(sender: UIButton) {
         if !(sender.selected) {
             drop_additional_views(sender)
-            view.addSubview(view_Filters)
-            view_Filters.translatesAutoresizingMaskIntoConstraints = false
-            let bottom_to_top = view_Filters.bottomAnchor.constraintEqualToAnchor(stackview_buttons.topAnchor)
-            NSLayoutConstraint.activateConstraints([bottom_to_top])
-            view_Filters.layoutIfNeeded()
+            view.addSubview(view_filters_list)
+            view_filters_list.translatesAutoresizingMaskIntoConstraints = false
+//            let bottom_to_top = view_filters_list.bottomAnchor.constraintEqualToAnchor(stackview_buttons.topAnchor)
+//            NSLayoutConstraint.activateConstraints([bottom_to_top])
+//            view_filters_list.layoutIfNeeded()
             sender.selected = true
         }
         else {
-            view_Filters.removeFromSuperview()
+            view_filters_list.removeFromSuperview()
             sender.selected = false
         }
     }
+    
+    //------- Managing list of filter buttons here --------
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4 //number of filter buttons. TODO: to make it more flexible in order to be able to add new filters easily
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! FiltersCell
+        cell.label.text = "Filters"
+        cell.image.image = icon_filter
+        
+        return cell
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     
     @IBAction func on_tap_Light_Filter(sender: AnyObject) {
         current_filter = brighter_f
@@ -138,7 +166,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         button_Filter.selected = false
         showFiltered()
     }
-
+    
     @IBAction func on_tap_Blue_Filter(sender: AnyObject) {
         current_filter = agressive_blue_f
         filteredImage = ImageProcessor(theImage: originalImage).applySetOfFilters([current_filter])
@@ -243,7 +271,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             view_Edit_Slider.removeFromSuperview()
         }
         if (sender != button_Filter) {
-            view_Filters.removeFromSuperview()
+            view_filters_list.removeFromSuperview()
             button_Filter.selected = false
         }
     }
