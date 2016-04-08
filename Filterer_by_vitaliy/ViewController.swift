@@ -124,12 +124,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return cell
     }
     
-    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        current_filter = available_filters[indexPath.row]
+        filteredImage = ImageProcessor(theImage: originalImage).applySetOfFilters([current_filter])
+        view_filters_list.removeFromSuperview()
+        FilteredImage.image = filteredImage
+        button_Compare.enabled = true
+        button_Edit.enabled = true
+        button_Filter.selected = false
+        showFiltered()
+    }
     
     //---- end of filters buttons list here -------
-    
-    
-    
     
     
     @IBAction func on_tap_Light_Filter(sender: AnyObject) {
@@ -168,7 +174,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func on_tap_Blue_Filter(sender: AnyObject) {
         current_filter = aggressive_blue_f
         filteredImage = ImageProcessor(theImage: originalImage).applySetOfFilters([current_filter])
-        view_Filters.removeFromSuperview()
+        view_filters_list.removeFromSuperview()
         FilteredImage.image = filteredImage
         button_Compare.enabled = true
         button_Edit.enabled = true
