@@ -88,10 +88,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if !(sender.selected) {
             drop_additional_views(sender)
             view.addSubview(view_filters_list)
-//            view_filters_list.translatesAutoresizingMaskIntoConstraints = false
-//            let bottom_to_top = view_filters_list.bottomAnchor.constraintEqualToAnchor(stackview_buttons.topAnchor)
-//            NSLayoutConstraint.activateConstraints([bottom_to_top])
-//            view_filters_list.layoutIfNeeded()
+ 
+            view_filters_list.translatesAutoresizingMaskIntoConstraints = false
+            let bottomConstraint = view_filters_list.bottomAnchor.constraintEqualToAnchor(stackview_buttons.topAnchor)
+            let leftConstraint = view_filters_list.leftAnchor.constraintEqualToAnchor(view.leftAnchor)
+            let rightConstraint = view_filters_list.rightAnchor.constraintEqualToAnchor(view.rightAnchor)
+            let heightConstraint = view_filters_list.heightAnchor.constraintEqualToConstant(140)
+            NSLayoutConstraint.activateConstraints([bottomConstraint, leftConstraint, rightConstraint, heightConstraint])
+
+            view_filters_list.layoutIfNeeded()
             sender.selected = true
         }
         else {
@@ -114,7 +119,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! FiltersCell
         cell.label.text = available_filters[indexPath.row].name
         cell.image.image = filter_preview_images[indexPath.row]
-        
         return cell
     }
     
