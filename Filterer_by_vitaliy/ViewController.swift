@@ -24,20 +24,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var button_Filter: UIButton!
     @IBOutlet weak var button_Edit: UIButton!
     @IBOutlet weak var button_Compare: UIButton!
-    @IBOutlet weak var button_Share: UIButton!
     @IBOutlet weak var slider_threshold: UISlider!
     @IBOutlet weak var slider_power: UISlider!
     
     @IBOutlet var view_Original_label: UIView!
-    @IBOutlet var view_Filters: UIView!
     @IBOutlet var view_filters_list: UICollectionView!
     @IBOutlet var view_Edit_Slider: UIView!
     
     @IBOutlet weak var stackview_buttons: UIStackView!
-    @IBOutlet weak var light_Button: UIButton!
-    @IBOutlet weak var green_Button: UIButton!
-    @IBOutlet weak var red_Button: UIButton!
-    @IBOutlet weak var blue_Button: UIButton!
 
     //this is the common filtering parameters to be remembered throughout the app while users makes changes in UI
     var current_filter: (name: String, threshold: Int, power: Int) = ("EnhanceBrightness", 500, 25)
@@ -137,51 +131,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     //---- end of filters buttons list here -------
     
-    
-    @IBAction func on_tap_Light_Filter(sender: AnyObject) {
-        current_filter = brighter_f
-        filteredImage = ImageProcessor(theImage: originalImage).applySetOfFilters([current_filter])
-        view_Filters.removeFromSuperview()
-        FilteredImage.image = filteredImage
-        button_Compare.enabled = true
-        button_Edit.enabled = true
-        button_Filter.selected = false
-        showFiltered()
-    }
-
-    @IBAction func on_tap_Green_Filter(sender: AnyObject) {
-        current_filter = aggressive_green_f
-        filteredImage = ImageProcessor(theImage: originalImage).applySetOfFilters([current_filter])
-        view_Filters.removeFromSuperview()
-        FilteredImage.image = filteredImage
-        button_Compare.enabled = true
-        button_Edit.enabled = true
-        button_Filter.selected = false
-        showFiltered()
-    }
-    
-    @IBAction func on_tap_Red_Filter(sender: AnyObject) {
-        current_filter = aggressive_red_f
-        filteredImage = ImageProcessor(theImage: originalImage).applySetOfFilters([current_filter])
-        view_Filters.removeFromSuperview()
-        FilteredImage.image = filteredImage
-        button_Compare.enabled = true
-        button_Edit.enabled = true
-        button_Filter.selected = false
-        showFiltered()
-    }
-    
-    @IBAction func on_tap_Blue_Filter(sender: AnyObject) {
-        current_filter = aggressive_blue_f
-        filteredImage = ImageProcessor(theImage: originalImage).applySetOfFilters([current_filter])
-        view_filters_list.removeFromSuperview()
-        FilteredImage.image = filteredImage
-        button_Compare.enabled = true
-        button_Edit.enabled = true
-        button_Filter.selected = false
-        showFiltered()
-    }
-    
     @IBAction func on_tap_Edit(sender: UIButton) {
         if !(sender.selected) {
             drop_additional_views(sender)
@@ -193,7 +142,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             let slide_view_right = view_Edit_Slider.rightAnchor.constraintEqualToAnchor(view.rightAnchor)
             let bottom_to_top_slider = view_Edit_Slider.bottomAnchor.constraintEqualToAnchor(stackview_buttons.topAnchor)
             NSLayoutConstraint.activateConstraints([slide_view_left, slide_view_right, bottom_to_top_slider])
-            view_Filters.layoutIfNeeded()
+            view_Edit_Slider.layoutIfNeeded()
             sender.selected = true
         }
         else {
