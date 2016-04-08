@@ -179,7 +179,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func on_tap_Share(sender: UIButton) {
         drop_additional_views(sender)
-        let activityController = UIActivityViewController(activityItems: [MainImage.image!], applicationActivities: nil)
+        let activityController = UIActivityViewController(activityItems: [FilteredImage.image!], applicationActivities: nil)
         presentViewController(activityController, animated: true, completion: nil)
     }
     
