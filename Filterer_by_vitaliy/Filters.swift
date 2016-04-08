@@ -18,7 +18,7 @@ class ImageProcessor {
         self.processedImage = RGBAImage(image: theImage)!
     }
     
-    func applySetOfFilters(filters: [(name: String, threshold: Int, power: Int)]) -> UIImage {
+    func applySetOfFilters(filters: [(name: String, threshold: Int, power: Int, label: String)]) -> UIImage {
         for currentFilter in filters {
             switch currentFilter.name {
             case "Enhance Brightness" : filterEnhanceBrightness(currentFilter.threshold, power: currentFilter.power)
@@ -32,11 +32,11 @@ class ImageProcessor {
     }
     
     func applyDefaultFilter (chosenFilter: String) -> UIImage {
-        let default_filters: [String: [(name: String, threshold: Int, power: Int)]] =
+        let default_filters: [String: [(name: String, threshold: Int, power: Int, label: String)]] =
             [
-                "RedFace": [("HighlightRed", 170, 300),("EnhanceBrightness", 500, 25)],
-                "GreenNature": [("HighlighGreen", 170, 300),("HighlightRed", 200, 150)],
-                "OutstandingBrightness": [("EnhanceBrightness", 500, 25),("EnhanceBrightness", 500, 25),("HighlightBlue", 200, 150)]
+                "RedFace": [("HighlightRed", 170, 300, "text"),("EnhanceBrightness", 500, 25, "text")],
+                "GreenNature": [("HighlighGreen", 170, 300, "text"),("HighlightRed", 200, 150, "text")],
+                "OutstandingBrightness": [("EnhanceBrightness", 500, 25, "text"),("EnhanceBrightness", 500, 25, "text"),("HighlightBlue", 200, 150, "text")]
         ]
         return self.applySetOfFilters(default_filters[chosenFilter]!)
     }
@@ -138,14 +138,14 @@ class ImageProcessor {
 // setting different types of predefined filters
 // by creating a set of Tuples (https://medium.com/swift-programming/swift-tuple-328aecff50e7#.wx23u3ui3)
 
-typealias Filter = (name: String, threshold: Int, power: Int)
-let brighter_f: Filter = ("Enhance Brightness", 500, 25)
-let weak_red_f: Filter = ("Highlight Red", 200, 150)
-let aggressive_red_f: Filter = ("Highlight Red", 170, 200)
-let weak_green_f: Filter = ("Highlight Green", 200, 150)
-let aggressive_green_f: Filter = ("Highlight Green", 170, 200)
-let weak_blue_f: Filter = ("Highlight Blue", 200, 150)
-let aggressive_blue_f: Filter = ("Highlight Blue", 170, 200)
+typealias Filter = (name: String, threshold: Int, power: Int, label: String)
+let brighter_f: Filter = ("Enhance Brightness", 500, 25, "More Brightness")
+let weak_red_f: Filter = ("Highlight Red", 200, 150, "More red")
+let aggressive_red_f: Filter = ("Highlight Red", 170, 200, "A lot of red")
+let weak_green_f: Filter = ("Highlight Green", 200, 150, "More green")
+let aggressive_green_f: Filter = ("Highlight Green", 170, 200, "A lot of green")
+let weak_blue_f: Filter = ("Highlight Blue", 200, 150, "More blue")
+let aggressive_blue_f: Filter = ("Highlight Blue", 170, 200, "A lot of blue")
 
 let available_filters = [brighter_f, weak_red_f, aggressive_red_f, weak_green_f, aggressive_green_f, weak_blue_f, aggressive_blue_f]
 

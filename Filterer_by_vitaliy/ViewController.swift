@@ -34,7 +34,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var stackview_buttons: UIStackView!
 
     //this is the common filtering parameters to be remembered throughout the app while users makes changes in UI
-    var current_filter: (name: String, threshold: Int, power: Int) = ("EnhanceBrightness", 500, 25)
+    var current_filter: (name: String, threshold: Int, power: Int, label: String) = ("EnhanceBrightness", 500, 25, "some label")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,7 +117,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! FiltersCell
-        cell.label.text = available_filters[indexPath.row].name
+        cell.label.text = available_filters[indexPath.row].label
         cell.image.image = filter_preview_images[indexPath.row]
         return cell
     }
