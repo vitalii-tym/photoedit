@@ -21,10 +21,10 @@ class ImageProcessor {
     func applySetOfFilters(filters: [(name: String, threshold: Int, power: Int)]) -> UIImage {
         for currentFilter in filters {
             switch currentFilter.name {
-            case "EnhanceBrightness" : filterEnhanceBrightness(currentFilter.threshold, power: currentFilter.power)
-            case "HighlightRed" : filterHighlightRed(currentFilter.threshold, power: currentFilter.power)
-            case "HighlightGreen" : filterHighlightGreen(currentFilter.threshold, power: currentFilter.power)
-            case "HighlightBlue" : filterHighlightBlue(currentFilter.threshold, power: currentFilter.power)
+            case "Enhance Brightness" : filterEnhanceBrightness(currentFilter.threshold, power: currentFilter.power)
+            case "Highlight Red" : filterHighlightRed(currentFilter.threshold, power: currentFilter.power)
+            case "Highlight Green" : filterHighlightGreen(currentFilter.threshold, power: currentFilter.power)
+            case "Highlight Blue" : filterHighlightBlue(currentFilter.threshold, power: currentFilter.power)
             default : print("error: proper filter for label \(currentFilter.name) not found")
             }
         }
@@ -134,20 +134,20 @@ class ImageProcessor {
 }
 
 
-
-
 //-----------------------------------------
 // setting different types of predefined filters
 // by creating a set of Tuples (https://medium.com/swift-programming/swift-tuple-328aecff50e7#.wx23u3ui3)
 
 typealias Filter = (name: String, threshold: Int, power: Int)
-let brighter_f: Filter = ("EnhanceBrightness", 500, 25)
-let weak_red_f: Filter = ("HighlightRed", 200, 150)
-let aggressive_red_f: Filter = ("HighlightRed", 170, 200)
-let weak_green_f: Filter = ("HighlightGreen", 200, 150)
-let agressive_green_f: Filter = ("HighlightGreen", 170, 200)
-let weak_blue_f: Filter = ("HighlightBlue", 200, 150)
-let agressive_blue_f: Filter = ("HighlightBlue", 170, 200)
+let brighter_f: Filter = ("Enhance Brightness", 500, 25)
+let weak_red_f: Filter = ("Highlight Red", 200, 150)
+let aggressive_red_f: Filter = ("Highlight Red", 170, 200)
+let weak_green_f: Filter = ("Highlight Green", 200, 150)
+let aggressive_green_f: Filter = ("Highlight Green", 170, 200)
+let weak_blue_f: Filter = ("Highlight Blue", 200, 150)
+let aggressive_blue_f: Filter = ("Highlight Blue", 170, 200)
+
+let available_filters = [brighter_f, weak_red_f, aggressive_red_f, weak_green_f, aggressive_green_f, weak_blue_f, aggressive_blue_f]
 
 //-----------------------------------------
 // working with the image here by applying the necessary set of filters directly to the UIImage
